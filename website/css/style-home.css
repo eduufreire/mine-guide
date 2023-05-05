@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@700&display=swap');
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
 }
 
 body{
@@ -187,10 +192,9 @@ section .container .image-main h2{
 .how-work .container .title h2{
     width: 80%;
     color: #0F0F0F;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 30px;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 35px;
     font-weight: bold;
-    letter-spacing: 1px;
     text-align: center;
 }
 
@@ -254,6 +258,319 @@ section .container .image-main h2{
     font-family: 'Noto Sans', sans-serif;
     font-size: 25px;
     text-align: left;
+}
+
+/*  
+    ---| FIM DA ESTILIZAÇÃO DO "COMO FUNCIONA"
+*/
+
+
+/*  
+    ---| INIÍCIO DA SEÇÃO DAS DICAS
+*/
+
+.tips-area{
+    width: 100%;
+    height: 830px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tips-area .container{
+    height: 90%;
+}
+
+.container .container-title{
+    width: 100%;
+    height: 5%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .container-title h1{
+    color: #0F0F0F;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.container .container-main{
+    width: 100%;
+    height: 95%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-main .image-main{
+    width: 45%; 
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-main .image-main img{
+    width: 410px;
+    height: 710px;
+}
+
+.container-main .cards-tips{
+    width: 55%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container-main .cards-tips .cards{
+    width: 100%;
+    height: 130px;
+    background-color: #428F4A;
+
+    display: flex;
+    flex-direction: row;
+    transition: 0.5s;
+}
+
+.container-main .cards-tips .cards:hover{
+    background-color: #35723b;
+    transition: 0.5s;
+}
+
+.cards-tips .cards .card-image{
+    width: 25%;
+    height: 100%;
+}
+
+.cards-tips .cards .card-text{
+    width: 75%;
+    height: 100%;
+}
+
+.cards .card-image{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards .card-image .fundo{
+    background-color: white;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards .card-image .fundo img{
+    width: 85px;
+    height: 85px;
+}
+
+.cards .card-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards .card-text h3{
+    width: 90%;
+    color: white;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.cards .card-text p{
+    width: 90%;
+    color: white;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.cards-tips button{
+    background-color: #153C19;
+    width: 250px;
+    height: 45px;
+
+    border: none;
+    text-align: center;
+    color: white;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.cards-tips button:hover{
+    background-color: #1e5724;
+    transition: 0.2s;
+}
+
+/*  
+    ---| FIM DA ESTILIZAÇÃO DA SEÇÃO DAS DICAS
+*/
+
+
+/*  
+    ---| INIÍCIO DA SEÇÃO SOBRE O JOGO
+*/
+
+.about-game{
+    width: 100%;
+    height: 950px;
+    background-image: url('../assets/img/fundo-deep-slake.png');
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    border-bottom: 10px solid #428F4A;
+}
+
+.onda-two{
+    height: 250px;
+}
+
+.onda-two img{
+    width: 100%;
+}
+
+.about-game .container{
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container .title-about{
+    height: 60px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .title-about h1{
+    border: none;
+    text-align: center;
+    color: white;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.container .container-about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 100%;
+
+}
+
+.container .cards-about{
+    width: 100%;
+    height: 450px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cards-about .card{
+    width: 300px;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cards-about .card .image{
+    width: 300px;
+    height: 250px;
+
+    background-color: #040c05;
+}
+
+.cards-about .card .text{
+    width: 300px;
+    height: 150px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards-about .card .text p{
+    width: 95%; 
+    border: none;
+    text-align: center;
+    color: white;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.container-about .button{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 10px;
+}
+
+.container-about .button button{
+    width: 300px;
+    height: 50px;
+    background-color: #428F4A;
+
+    border: none;
+    text-align: center;
+    color: white;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.container-about .button button:hover{
+    background-color: #1e5724;
+    transition: 0.2s;
+}
+
+.container-about .button a, 
+.button a:link, 
+.button a:visited,
+.button a:hover,
+.button a:active{
+    text-decoration: none;
+    color: white;
 }
 
 
