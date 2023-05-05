@@ -29,7 +29,7 @@ body{
 
 }
 
-nav{
+.nav{
     width: 100%;
     height: 100px;
 
@@ -39,7 +39,7 @@ nav{
     flex-direction: row;
 }
 
-nav .container{
+.nav .container{
     height: 100%;
 
     display: flex;
@@ -48,31 +48,31 @@ nav .container{
     flex-direction: row;
 }
 
-nav .container .links{
+.nav .container .links-fixed{
     width: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
-nav .container .links a img{
+.nav .container .links-fixed a img{
     width: 25px;
     height: 25px;
 }
 
-nav .container .links a{
+.nav .container .links-fixed a{
     position: relative;
     display: flex;
     align-items: center;
     font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 800;
     text-decoration: none;
     letter-spacing: 1px;
     padding: 0 5px;
 }
 
-nav .container .links a::after{
+.nav .container .links-fixed a::after{
     content: "";
     position: absolute;
     background-color: #428F4A;
@@ -83,16 +83,16 @@ nav .container .links a::after{
     transition: 0.3s;
 }
 
-nav .container .links a:hover:after{
+.nav .container .links-fixed a:hover:after{
     width: 100%;
 }
 
 
-nav .container .links a:link,
-nav .container .links a:visited, 
-nav .container .links a:focus, 
-nav .container .links a:hover,
-nav .container .links a:active{
+.nav .container .links-fixed a:link,
+.nav .container .links-fixed a:visited, 
+.nav .container .links-fixed a:focus, 
+.nav .container .links-fixed a:hover,
+.nav .container .links-fixed a:active{
     color: white;
 }
 
@@ -369,8 +369,8 @@ section .container .image-main h2{
 
 .cards .card-image .fundo{
     background-color: white;
-    width: 110px;
-    height: 110px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
 
     display: flex;
@@ -379,8 +379,8 @@ section .container .image-main h2{
 }
 
 .cards .card-image .fundo img{
-    width: 85px;
-    height: 85px;
+    width: 80px;
+    height: 80px;
 }
 
 .cards .card-text{
@@ -448,7 +448,7 @@ section .container .image-main h2{
     align-items: center;
     flex-direction: column;
 
-    border-bottom: 10px solid #428F4A;
+    border-bottom: 8px solid #428F4A;
 }
 
 .onda-two{
@@ -576,6 +576,187 @@ section .container .image-main h2{
 .button a:active{
     text-decoration: none;
     color: white;
+}
+
+/* */
+
+.suggestions{
+    width: 100%;
+    height: 600px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.suggestions .container{
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.suggestions .container .container-main{
+    width: 100%;
+    height: 420px;
+}
+
+.container .container-main .image{
+    width: 40%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .container-main .form{
+    width: 60%;
+    height: 100%;
+}
+
+.container-main .image .back{
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background-image: url('../assets/img/fundo-deep-slake.png');
+    background-repeat: no-repeat;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-main .image .back img{
+    width: 245px;
+    height: 250px;
+}
+
+.container-main .form .text-box{
+    width: 100%;
+    height: 30%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container-main .form .text-box h2{
+    text-align: center;
+    color: #0F0F0F;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.container-main .form .text-box p{
+    width: 70%;
+    text-align: center;
+    color: #0F0F0F;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 15px;
+}
+
+.container-main .form .form-box{
+    width: 100%;
+    height: 65%;
+}
+
+.form .form-box .input-email{
+    width: 100%;
+    height: 30%;
+
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+    flex-direction: column;
+}
+
+.form .form-box .input-email input{
+    width: 600px;
+    height: 40px;
+    border: 2px solid #428F4A;
+
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 15px;
+    padding-left: 5px;
+    transition: 0.1s;
+}
+
+.form .form-box .input-email input:focus,
+.form .form-box .input-text textarea:focus{
+    border: 3px solid #153C19;
+    outline: none;
+}
+
+.form .form-box .input-email p{
+    text-align: center;
+    color: #428F4A;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+
+    align-self: baseline;
+    margin-left: 25px;
+}
+
+.form .form-box .input-text{
+    width: 100%;
+    height: 55%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.form .form-box .input-text textarea{
+    width: 600px;
+    height: 120px;
+    border: 2px solid #428F4A;
+
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 13px;
+    padding-left: 5px;
+
+    transition: 0.1s;
+}
+
+.form .form-box .input-text p{
+    text-align: center;
+    color: #428F4A;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+
+    align-self: baseline;
+    margin-left: 25px;
+}
+
+
+.form .form-box .form-button{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.form .form-box .form-button button{
+    width: 240px;
+    height: 35px;
+    background-color: #428F4A;
+    border: none;
+
+    text-align: center;
+    color: #ffffff;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
 }
 
 

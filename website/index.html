@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -8,17 +8,19 @@
     <title>Mine Guide - Home</title>
 
     <link rel="shortcut icon" href="assets/icons/icon-mine-guide.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style-scrollbar.css">
     <link rel="stylesheet" href="css/style-home.css">
+    <link rel="stylesheet" href="css/style-nav-footer.css">
 </head>
 
 <body>
 
     <!-- --=| SEÇÃO: TELA INICIAL -->
     <div class="first-screen" id="first">
-        <nav>
+        <div class="nav">
             <div class="container">
 
-                <div class="links">
+                <div class="links-fixed">
                     <a href="#first">
                         INÍCIO
                     </a>
@@ -35,13 +37,17 @@
                         SOLUÇÃO
                     </a>
 
+                    <a href="#sugestoes">
+                        SUGESTÕES
+                    </a>
+
                     <a href="">
                         <img src="assets/icons/icon-creeper-navbar.png" alt="" id="icon-navbar">
                     </a>
                 </div>
 
             </div>
-        </nav>
+        </div>
 
         <section>
             <div class="container">
@@ -235,7 +241,8 @@
 
 
                 <div class="button">
-                    <button><a href="https://minecraft.fandom.com/pt/wiki/Minecraft_Wiki" target="_blank">MAIS INFO</a></button>
+                    <button><a href="https://minecraft.fandom.com/pt/wiki/Minecraft_Wiki" target="_blank">MAIS
+                            INFO</a></button>
                 </div>
 
             </div>
@@ -246,9 +253,93 @@
 
 
     </div>
+
+    <div class="suggestions">
+        <div class="container" id="sugestoes">
+
+            <div class="container-main">
+
+                <div class="image">
+                    <div class="back">
+                        <img src="assets/img/placa-sugestoes.png" alt="">
+                    </div>
+                </div>
+
+                <div class="form" >
+                    <div class="text-box">
+                        <h2>SUGESTÕES</h2>
+                        <p>Possui alguma sugestão para que nossa equipe melhore no site? Nos envie através desse
+                            formulário!</p>
+                    </div>
+
+                    <div class="form-box">
+                        <div class="input-email">
+                            <p>Email:</p>
+                            <input type="text">
+                        </div>
+
+
+                        <div class="input-text">
+                            <p>Mensagem:</p>
+                            <textarea name="" id="" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="form-button">
+                            <button>ENVIAR</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
     </div>
 
 
+    <footer>
+        <div class="container">
+
+            <div class="logo">
+                <a href=""><img src="assets/img/icon-mine-guide.png" alt=""></a>
+                <p>Mine Guide © 2023</p>
+            </div>  
+
+            <div class="links">
+                <a href="">
+                    INÍCIO
+                </a>
+
+                <a href="">
+                    JOGO
+                </a>
+
+                <a href="">
+                    SOBRE
+                </a>
+
+                <a href="">
+                    SOLUÇÃO
+                </a>
+            </div>
+
+            <div class="social-links">
+                <a href="">
+                    <img src="assets/icons/icon-insta.png" alt="">
+                </a>
+
+                <a href="">
+                    <img src="assets/icons/icon-zap.png" alt="">
+                </a>
+
+                <a href="">
+                    <img src="assets/icons/icon-gmail.png" alt="">
+                </a>
+            </div>
+
+        </div>
+    </footer>
 
 
 
