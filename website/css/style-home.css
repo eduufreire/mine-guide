@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@700&display=swap');
+/* 1366 X 592 -- RESOLUÇÃO FACULDADE */
+
 
 *{
     margin: 0;
@@ -21,7 +23,7 @@ body{
 
 .first-screen{
     width: 100%;
-    height: 900px;
+    height: 850px;
     background-image: url('../assets/img/fundo-deep-slake.png');
     background-repeat: no-repeat;
 
@@ -134,14 +136,14 @@ section .container .image-main{
     align-items: center;
     flex-direction: column;
 
-    margin-bottom: 20%;
+    margin-bottom: 10vh;
 }
 
 section .container .image-main h2{
     width: 80%;
     color: white;
     font-family: 'Noto Sans', sans-serif;
-    font-size: 45px;
+        font-size: 40px;
     font-weight: bold;
     letter-spacing: 1px;
     text-align: center;
@@ -151,7 +153,7 @@ section .container .image-main h2{
     position: relative;
     height: 250px;
 
-    margin-top: 45%;
+    margin-top: 40%;
 }
 
 .onda-one img{
@@ -176,11 +178,11 @@ section .container .image-main h2{
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .how-work .container{
-    height: 90%;
-    margin-top: 50px;
+    height: 100%;
 }
 
 .how-work .container .title{
@@ -207,8 +209,8 @@ section .container .image-main h2{
 }
 
 .how-work .container .cards-how-work .card{
-    width: 950px;
-    height: 270px;
+    width: 100%;
+    height: 250px;
     background-color: #428F4A;
 
     margin: 10px;
@@ -234,17 +236,16 @@ section .container .image-main h2{
 
 .cards-how-work .card .imagem img{
     width: 280px;
-    height: 260px;
-
+    height: 240px;
 }
 
 .cards-how-work .card .imagem .imagem-dois{
     width: 350px;
-    height: 280px;
+    height: 240px;
 }
 
 .cards-how-work .card .text-card{
-    width: 600px;
+    width: 750px;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -276,6 +277,9 @@ section .container .image-main h2{
     display: flex;
     justify-content: center;
     align-items: center;
+
+    margin-top: 10vh;
+
 }
 
 .tips-area .container{
@@ -435,7 +439,7 @@ section .container .image-main h2{
 
 .about-game{
     width: 100%;
-    height: 950px;
+    height: 900px;
     background-image: url('../assets/img/fundo-deep-slake.png');
     background-repeat: no-repeat;
 
@@ -448,7 +452,7 @@ section .container .image-main h2{
 }
 
 .onda-two{
-    height: 250px;
+    height: 220px;
 }
 
 .onda-two img{
@@ -456,7 +460,7 @@ section .container .image-main h2{
 }
 
 .about-game .container{
-    height: 80%;
+    height: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -466,6 +470,7 @@ section .container .image-main h2{
 .container .title-about{
     height: 60px;
     width: 100%;
+    margin: 15px;
 
     display: flex;
     justify-content: center;
@@ -493,7 +498,7 @@ section .container .image-main h2{
 
 .container .cards-about{
     width: 100%;
-    height: 450px;
+    height: 400px;
 
     display: flex;
     justify-content: space-around;
@@ -545,15 +550,15 @@ section .container .image-main h2{
 }
 
 .container-about .button button{
-    width: 300px;
-    height: 50px;
+    width: 270px;
+    height: 45px;
     background-color: #428F4A;
 
     border: none;
     text-align: center;
     color: white;
     font-family: 'Noto Sans', sans-serif;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
 
     transition: 0.2s;
