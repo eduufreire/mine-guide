@@ -4,7 +4,7 @@ function changeNavbar(){
     if(scrollY == 0){
         navbar.style = 'background-color = none'
     } else {
-        navbar.style.backgroundColor = '#0F0F0F'
+        navbar.style = 'background-color: #0F0F0F'
     }
 }
 
