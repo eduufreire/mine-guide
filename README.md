@@ -26,3 +26,6 @@ A nossa missão é fazer com que todos os tipos de jogadores possam usar as noss
   
   # 💻 | Idealizador
   - Eduardo Sousa
+
+   - <b>OBSERVAÇÃO</b>: O site não está responsivo, estou utilizando o recurso do navegador para programar. <br> Faça da seguinte forma: INSPECIONAR ELEMENTO > TOGGLE DEVICE BAR (FERRAMENTA DE RESPONSIVIDADE) > DIMENSÕES: 1362 x 592
+   - Site: https://eduufreire.github.io/mine-guide/website/index.html
