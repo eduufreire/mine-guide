@@ -95,7 +95,7 @@ body{
 
 .form .form-login{
     width: 100%;
-    height: 65%;
+    height: 70%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -118,56 +118,125 @@ body{
     text-align: center;
 }
 
-.form .form-login .inputs{
-    height: 50%;
+
+/* *===================== */
+
+.form-login .container-inputs{
+    width: 100%;
+    height: 65%;
+
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
 }
 
-.form .form-login .inputs .input{
+.container-inputs .group-input{
     width: 100%;
-    margin: 10px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.container-main .group-input .input{
+    width: 35%;
+    height: 100%;
+
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}   
+    margin: 0 10px;
+}
 
-.inputs .input input{   
-    width: 350px;
-    height: 35px;
-    border: 2px solid #428F4A;
+.group-input .input .parag{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+}
 
+.input .parag p{
+    color: #428F4A;
     font-family: 'Noto Sans', sans-serif;
-    font-size: 15px;
-    padding-left: 5px;
+    font-size: 12px;
+    font-weight: 800;
+}
 
+.group-input .input input{
+    width: 100%;
+    height: 35px;
+    border: 2px #428F4A solid;
     transition: 0.2s;
 }
 
-.inputs .input input:focus{
-    border: 2px solid #153C19;
+.group-input .input select{
+    width: 100%;
+    height: 35px;
+
+    border: 2px #428F4A solid;
+    background-color: white;
+    font-family: 'Noto Sans';
+    transition: 0.2s;
+}
+
+.container-inputs .input{
+    width: 100%;
+    height: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input input{
+    width: 74%;
+    height: 35px;
+    border: 2px #428F4A solid;
+    transition: 0.2s;
+}
+
+.input .parag{
+    width: 73%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+}
+
+.group-input .input input:focus,
+.group-input .input select:focus,
+.input input:focus{
+    border: #153C19 solid 2px;
     outline: none;
 }
 
-.inputs .input input::placeholder{
+.group-input .input input::placeholder,
+.input input::placeholder{
     font-size: 12px;
-    padding-left: 3px;
+    padding-left: 5px;
 }
 
 
-.inputs .input p{
-    text-align: center;
-    color: #428F4A;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 15px;
-    font-weight: bold;
 
-    align-self: flex-start;
-    margin-left: 10px;
-}
+
+
+
+
+
+
+
+
+
+/* *===================== */
+
+
+
 
 
 .form .form-login .button{
@@ -191,9 +260,13 @@ body{
 }
 
 
+
+
+
+
 .form .link{
     width: 100%;
-    height: 10%;
+    height: 15%;
 
     display: flex;
     justify-content: center;
