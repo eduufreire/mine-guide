@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@700&display=swap');
+/* 1366 X 592 -- RESOLUÇÃO FACULDADE */
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+
+    background-image: url('../assets/img/fundo-deep-slake.png   ');
+    background-repeat: no-repeat;
+}
+
+.container-main{
+    width: 100%;
+    height: 600px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-main .container{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+}
+
+.container .container-background{
+    background-color: antiquewhite;
+    width: 100%;
+    height: 550px;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.container-background .image{
+    width: 40%; 
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url('../assets/img/fundo-loginCadastro.png');
+}
+
+.container-background .image img{
+    width: 320px;
+    height: 235px;
+}
+
+.container-background .form{
+    width: 60%;
+    height: 100%;
+    background-color: #FFFFFF;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.form .top{
+    width: 100%;
+    height: 10%;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+
+    padding-right: 10px;
+}
+
+.form .top img{
+    width: 50px;
+    height: 50px;
+}
+
+
+.form .form-login{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form .form-login .title{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form .form-login .title h1{
+    color: #0F0F0F;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.form .form-login .inputs{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form .form-login .inputs .input{
+    width: 70%;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}   
+
+.inputs .input input{   
+    width: 400px;
+    height: 35px;
+    border: 2px solid #428F4A;
+
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 15px;
+    padding-left: 5px;
+}
+
+.inputs .input p{
+    text-align: center;
+    color: #428F4A;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+
+    align-self: baseline;
+    margin-left: 7%;
+}
+
+
+
+
+.form .form-login .button{
+    width: 100%;
+    height: 15%;
+    background-color: rgb(238, 14, 14);
+}
+
+
+
+.form .link{
+    width: 100%;
+    height: 15%;
+}
+
+
+
