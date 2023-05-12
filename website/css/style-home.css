@@ -668,7 +668,7 @@ section .container .image-main h2{
     text-align: center;
     color: #0F0F0F;
     font-family: 'Noto Sans', sans-serif;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 .container-main .form .form-box{
@@ -712,7 +712,7 @@ section .container .image-main h2{
     font-weight: bold;
 
     align-self: baseline;
-    margin-left: 25px;
+    margin-left: 16px;
 }
 
 .form .form-box .input-text{
@@ -746,7 +746,7 @@ section .container .image-main h2{
     font-weight: bold;
 
     align-self: baseline;
-    margin-left: 25px;
+    margin-left: 16px;
 }
 
 

@@ -203,15 +203,16 @@ nav .container .links a:active{
 }
 
 .card .text-box p{
-    width: 80%;
+    width: 85%;
     height: 50%;
     display: flex;
     color: #0F0F0F;
     justify-content: center;
     align-items: center;
     font-family: 'Noto Sans', sans-serif;
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
+    margin-top: 5px;
 }
 
 
@@ -265,7 +266,7 @@ nav .container .links a:active{
     align-items: center;
     color: #0F0F0F;
     font-family: 'Noto Sans', sans-serif;
-    font-size: 30px;
+    font-size: 23px;
     text-align: center;
 }
 
@@ -434,14 +435,14 @@ nav .container .links a:active{
 }
 
 .container .cards .text-box p{
-    width: 90%; 
+    width: 85%; 
     height: 50%;
     display: flex;
     color: white;
     justify-content: center;
     align-items: center;
     font-family: 'Noto Sans', sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
 }
 
@@ -488,14 +489,14 @@ nav .container .links a:active{
 }
 
 .container .cards2 .text-box p{
-    width: 90%; 
+    width: 85%; 
     height: 50%;
     display: flex;
     color: white;
     justify-content: center;
     align-items: center;
     font-family: 'Noto Sans', sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
 }
 
