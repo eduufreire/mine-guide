@@ -113,11 +113,10 @@ nav .container .links a:active{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
 }
 
 .user-info .container .container-info{
-    height: 70%;
+    height: 65%;
     width: 90%;
     background-color: #428F4A;
     display: flex;
@@ -125,7 +124,7 @@ nav .container .links a:active{
 }
 
 .container-info .image{
-    width: 35%;
+    width: 30%;
     height: 100%;
     background-color: white;
     display: flex;
@@ -134,12 +133,12 @@ nav .container .links a:active{
 }
 
 .container-info .image img{
-    width: 95%;
-    height: 95%;
+    width: 85%;
+    height: 85%;
 }
 
 .container-info .box-info{
-    width: 65%;
+    width: 70%;
     height: 100%;
     background-color: #428F4A;
     display: flex;
@@ -150,8 +149,6 @@ nav .container .links a:active{
 .box-info .text{
     width: 55%;
     height: 70%;
-    background-color: #0F0F0F;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -163,9 +160,13 @@ nav .container .links a:active{
     height: 30%;
     display: flex;
     flex-direction: column;
-
     justify-content: center;
     align-items: flex-start;
+
+    color: white;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .text .texts{
@@ -174,11 +175,16 @@ nav .container .links a:active{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    color: white;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
 }
 
-
-
-
+.text .texts p{
+    margin: 2px 0px;
+}
 
 
 .box-info .rank{
@@ -190,8 +196,8 @@ nav .container .links a:active{
 }
 
 .box-info .rank .background{
-    width: 200px;
-    height: 200px;
+    width: 170px;
+    height: 170px;
     background-color: white;
     border-radius: 50%;
     display: flex;
@@ -200,7 +206,120 @@ nav .container .links a:active{
 }
 
 .rank .background img{
-    width: 150px;
-    height: 150px;
+    width: 110px;
+    height: 110px;
 }
 
+/* 
+
+*/
+
+.data-players{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.data-players .container{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .content{
+    width: 100%;
+    height: 90%;
+    margin-top: 5vh;
+}
+
+.content .title{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content .title h1{
+    color: #1E1E1E;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.content .cards{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+.cards .card{
+    width: 220px;
+    height: 220px;
+    background-color: #1E1E1E;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card .title{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card .title h2{
+    color: white;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.card .percent{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card .percent h2{
+    color: white;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.active h2{
+    color: rgb(58, 13, 13);
+}
+
+.card .number{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card .number h3{
+    color: white;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
