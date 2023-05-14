@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+nav{
+    position: fixed;
+    top: 0;
+    z-index: 3;
+
+    width: 100%;
+    height: 65px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #0F0F0F;
+}
+
+nav .container{
+    height: 100%;
+    width: 90%;     
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .container .logo img{
+    width: 35px;
+    height: 35px;
+}
+
+nav .container .links{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#icon-navbar{
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+nav .container .links a{
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1px;
+    padding: 0 5px;
+}
+
+nav .container .links a::after{
+    content: "";
+    position: absolute;
+    background-color: #428F4A;
+    height: 3px;
+    width: 0%;
+    left: 0;
+    bottom: -7px;
+    transition: 0.3s;
+}
+
+nav .container .links a:hover:after{
+    width: 100%;
+}
+
+
+nav .container .links a:link,
+nav .container .links a:visited, 
+nav .container .links a:focus, 
+nav .container .links a:hover,
+nav .container .links a:active{
+    color: white;
+}
+
+.container{
+    width: 80%;
+}
+
+/*  */
+
+
+.user-info{
+    width: 100%;
+    height: 420px;
+    background-image: url('../assets/img/fundo-deep-slake.png');
+    background-repeat: no-repeat;
+    margin-top: 65px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-info .container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+}
+
+.user-info .container .container-info{
+    height: 70%;
+    width: 90%;
+    background-color: #428F4A;
+    display: flex;
+    flex-direction: row;
+}
+
+.container-info .image{
+    width: 35%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-info .image img{
+    width: 95%;
+    height: 95%;
+}
+
+.container-info .box-info{
+    width: 65%;
+    height: 100%;
+    background-color: #428F4A;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.box-info .text{
+    width: 55%;
+    height: 70%;
+    background-color: #0F0F0F;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text .title{
+    width: 80%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.text .texts{
+    width: 80%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+
+
+
+
+.box-info .rank{
+    width: 45%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-info .rank .background{
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rank .background img{
+    width: 150px;
+    height: 150px;
+}
+
