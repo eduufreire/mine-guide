@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mine Guide - Home</title>
+    <title>Mine Guide - Usuário</title>
 
     <link rel="shortcut icon" href="../assets/icons/icon-mine-guide.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/style-scrollbar.css">
     <link rel="stylesheet" href="../css/style-page-user.css">
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
 </head>
 
 <body>
@@ -88,7 +90,7 @@
                 <div class="title">
                     <h1>PLAYERS NO BLOG</h1>
                 </div>
-    
+
                 <div class="cards">
 
                     <div class="card">
@@ -148,9 +150,9 @@
                         </div>
                     </div>
                 </div>
-    
+
             </div>
-            
+
         </div>
     </div>
 
@@ -180,7 +182,9 @@
                                 </div>
 
                                 <div class="desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra quam sapien, commodo varius purus dignissim quis. Ut vestibulum ut est sed posuere.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra quam
+                                        sapien, commodo varius purus dignissim quis. Ut vestibulum ut est sed posuere.
+                                    </p>
                                 </div>
 
                             </div>
@@ -210,7 +214,9 @@
                                 </div>
 
                                 <div class="desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra quam sapien, commodo varius purus dignissim quis. Ut vestibulum ut est sed posuere.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra quam
+                                        sapien, commodo varius purus dignissim quis. Ut vestibulum ut est sed posuere.
+                                    </p>
                                 </div>
 
                             </div>
@@ -243,7 +249,9 @@
                                 </div>
 
                                 <div class="desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra quam sapien, commodo varius purus dignissim quis. Ut vestibulum ut est sed posuere.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra quam
+                                        sapien, commodo varius purus dignissim quis. Ut vestibulum ut est sed posuere.
+                                    </p>
                                 </div>
 
                             </div>
@@ -274,7 +282,9 @@
                                 </div>
 
                                 <div class="desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra quam sapien, commodo varius purus dignissim quis. Ut vestibulum ut est sed posuere.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra quam
+                                        sapien, commodo varius purus dignissim quis. Ut vestibulum ut est sed posuere.
+                                    </p>
                                 </div>
 
                             </div>
@@ -293,11 +303,184 @@
                 </div>
 
             </div>
-        
+
+            <div class="button-random">
+                <button>NOVAS DICAS</button>
+            </div>
+
         </div>
     </div>
+
+
+    <div class="graphics">
+        <div class="container">
+
+
+            <div class="container-card">
+
+                <div class="content-graph">
+
+                    <div class="title">
+                        <h2>PLAYERS POR NÍVEL</h2>
+                    </div>
+
+                    <div class="charts">
+                        <canvas id="chartNivel"></canvas>
+                    </div>
+
+                </div>
+
+                <div class="image-3d one">
+                    <model-viewer class="model-3d" src="../assets/3d-model/fox_minecraft.glb"
+                        ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" autoplay>
+                    </model-viewer>
+                </div>
+            </div>
+
+            <div class="container-card reverse">
+
+                <div class="content-graph">
+
+                    <div class="title">
+                        <h2>PLAYERS POR PLATAFORMA</h2>
+                    </div>
+
+                    <div class="charts">
+                        <canvas id="chartPlataforma"></canvas>
+                    </div>
+
+                </div>
+
+                <div class="image-3d two">
+                    <model-viewer class="model-3d" src="../assets/3d-model/minecraft_pickaxe.glb"
+                        ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" autoplay>
+                    </model-viewer>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+
+            <div class="logo">
+                <a href=""><img src="../assets/img/icon-mine-guide.png" alt=""></a>
+                <p>Mine Guide © 2023</p>
+            </div>
+
+            <div class="links">
+                <a href="">
+                    INÍCIO
+                </a>
+
+                <a href="index.html#about-game">
+                    JOGO
+                </a>
+
+                <a href="about.html">
+                    SOBRE
+                </a>
+
+                <a href="index.html#sugestoes">
+                    SUGESTÕES
+                </a>
+            </div>
+
+            <div class="social-links">
+                <a href="">
+                    <img src="../assets/icons/icon-insta.png" alt="">
+                </a>
+
+                <a href="">
+                    <img src="../assets/icons/icon-zap.png" alt="">
+                </a>
+
+                <a href="">
+                    <img src="../assets/icons/icon-gmail.png" alt="">
+                </a>
+            </div>
+
+        </div>
+    </footer>
 
 
 </body>
 
 </html>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+    const chartNivel = document.getElementById('chartNivel');
+    const chartPlataforma = document.getElementById('chartPlataforma');
+
+
+    new Chart(chartNivel, {
+
+        type: 'doughnut',
+
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+            datasets: [{
+                label: 'Qtde. Player',
+                color: 'white',
+                data: [12, 19, 3, 5, 2],
+                borderWidth: 1,
+                borderColor: 'white',
+                backgroundColor: ['#9BD0F5', '#E9881A', '#4AEDD9', 'white', 'blue']
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        color: 'white',
+                        font: {
+                            size: 10,
+                            family: 'Noto Sans',
+                        }
+                    }
+                }
+            }
+        }
+
+    });
+
+
+    new Chart(chartPlataforma, {
+
+        type: 'doughnut',
+
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+            datasets: [{
+                label: 'Qtde. Player',
+                color: 'white',
+                data: [12, 19, 3, 5, 2],
+                borderWidth: 1,
+                borderColor: 'white',
+                backgroundColor: ['#9BD0F5', '#E9881A', '#4AEDD9', 'white', 'blue']
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        color: 'white',
+                        font: {
+                            size: 10,
+                            family: 'Noto Sans',
+                        }
+                    }
+                }
+            }
+        }
+
+    });
+</script>

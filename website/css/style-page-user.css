@@ -222,7 +222,7 @@ nav .container .links a:active{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10vh;
+    margin-top: 5%;
 }
 
 .data-players .container{
@@ -480,4 +480,209 @@ nav .container .links a:active{
 .content .like .button-like img{
     width: 35px;
     height: 35px;
+}
+
+.container .button-random{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.button-random button{
+    width: 230px;
+    height: 40px;
+    background-color: #153C19;
+
+    border: none;
+    font-family: 'Noto Sans';
+    color: white;
+    font-size: 20px;
+}
+
+
+/* 
+
+*/
+
+.graphics{
+    width: 100%;
+    height: 1100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.graphics .container{
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.graphics .container .container-card{
+    width: 100%;
+    height: 450px;
+    background-color: #1E1E1E;
+    display: flex;
+    align-items: center;
+}
+.reverse{
+    flex-direction: row-reverse;
+}
+
+.container-card .content-graph{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container-card .image-3d{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.one{
+    background-image: url('../assets/img/fundo-floresta.png');
+}
+.two{
+    background-image: url('../assets/img/caverna.jpg'); 
+}
+
+.image-3d .model-3d{
+    width: 100%;
+    height: 100%;
+}
+
+.content-graph .charts{
+    width: 100%;    
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-graph .title{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-graph .title h2{
+    color: #ffffff;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 30px;
+}
+
+
+
+
+/* FOOTER */
+
+footer{
+    width: 100%;
+    height: 130px;
+    background-color: #0F0F0F;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+footer .container{
+    width: 90%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .container .logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .container .logo img{
+    width: 35px;
+    height: 35px;
+}
+
+footer .container .logo p{
+    color: white;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 10px;
+    margin: 5px;
+}
+
+footer .container .links{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+footer .container .links a{
+    position: relative;
+    display: flex;  
+    align-items: center;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 1px;
+    padding: 0 5px;
+}
+
+footer .container .links a::after{
+    content: "";
+    position: absolute;
+    background-color: #428F4A;
+    height: 3px;
+    width: 0%;
+    left: 0;
+    bottom: -7px;
+    transition: 0.3s;
+}
+
+footer .container .links a:hover:after{
+    width: 100%;
+}
+
+
+footer .container .social-links{
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+footer .container .social-links a img{
+    width: 30px;
+    height: 30px;
+}
+
+
+
+footer .container a:link,
+footer .container a:visited, 
+footer .container a:focus, 
+footer .container a:hover,
+footer .container a:active{
+    color: white;
 }
