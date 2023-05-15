@@ -106,6 +106,8 @@ nav .container .links a:active{
     display: flex;
     justify-content: center;
     align-items: center;
+
+    border-bottom: 8px solid #428F4A;
 }
 
 .user-info .container{
@@ -220,6 +222,7 @@ nav .container .links a:active{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10vh;
 }
 
 .data-players .container{
@@ -233,7 +236,6 @@ nav .container .links a:active{
 .container .content{
     width: 100%;
     height: 90%;
-    margin-top: 5vh;
 }
 
 .content .title{
@@ -322,4 +324,160 @@ nav .container .links a:active{
     font-size: 20px;
     font-weight: bold;
     letter-spacing: 1px;
+}
+
+/* 
+
+*/
+
+.dicas{
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dicas .container{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dicas .container .title{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dicas .container .title h1{
+    color: #1E1E1E;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.container .container-cards{
+    height: 80%;
+    width: 100%;
+}
+
+.container-cards .group-card{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+.group-card .card{
+    width: 500px;
+    height: 200px;
+    background-color: #428F4A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.card .image{
+    width: 35%;
+    height: 100%;
+}
+
+.card .image img{
+    width: 100%;
+    height: 100%;
+}
+
+.card .content{
+    width: 65%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content .text{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.content .text .title{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content .text .title h3{
+    color: #ffffff;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.content .text .desc{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content .text .desc p{
+    width: 90%;
+    text-align: center;
+    color: #ffffff;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 15px;
+}
+
+.content .like{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.content .like .count-like{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content .like .count-like p{
+    text-align: center;
+    color: #ffffff;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 13px;
+}
+
+.content .like .button-like{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content .like .button-like img{
+    width: 35px;
+    height: 35px;
 }
