@@ -1,5 +1,5 @@
 <div>
-  <img height="300" width="300" src="https://github.com/eduufreire/mine-guide/blob/main/website/assets/img/icon-mine-guide.png" align="right">
+  <img height="300" width="300" src="https://github.com/eduufreire/mine-guide/blob/main/site/public/assets/img/icon-mine-guide.png" align="right">
   <h1>🌄 | Mine Guide</h1>
   <p> 
     Mine Guide tem como objetivo mostrar de forma simples e clara, coisas que os jogadores podem fazer durante a sua jogatina.
