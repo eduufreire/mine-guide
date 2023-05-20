@@ -421,23 +421,22 @@
 
     new Chart(chartNivel, {
 
-        type: 'doughnut',
+        type: 'bar',
 
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+            labels: ['Red', 'Blue', 'Yellow', 'Green'],
             datasets: [{
-                label: 'Qtde. Player',
                 color: 'white',
-                data: [12, 19, 3, 5, 2],
+                data: [12, 19, 3, 5],
                 borderWidth: 1,
                 borderColor: '#1E1E1E',
-                backgroundColor: ['#3675bc', '#b64b9b', '#f47a20', '#69bd63', '#f5ea03']
+                backgroundColor: ['#69bd63', '#69bd63', '#69bd63', '#69bd63']
             }]
         },
         options: {
             plugins: {
                 legend: {
-                    display: true,
+                    display: false,
                     labels: {
                         color: 'white',
                         font: {
@@ -454,23 +453,22 @@
 
     new Chart(chartPlataforma, {
 
-        type: 'doughnut',
+        type: 'bar',
 
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+            labels: ['Red', 'Blue', 'Yellow', 'Green',],
             datasets: [{
-                label: 'Qtde. Player',
                 color: 'white',
-                data: [12, 19, 3, 5, 2],
+                data: [12, 19, 3, 5],
                 borderWidth: 1,
                 borderColor: '#1E1E1E',
-                backgroundColor: ['#36a8d9', '#fbad39', '#ed4c40', '#5c78bd', '#d7e458']
+                backgroundColor: ['#428F4A', '#428F4A', '#428F4A', '#428F4A']
             }]
         },
         options: {
             plugins: {
                 legend: {
-                    display: true,
+                    display: false,
                     labels: {
                         color: 'white',
                         font: {

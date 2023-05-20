@@ -562,7 +562,7 @@ nav .container .links a:active{
 }
 
 .content-graph .charts{
-    width: 100%;    
+    width: 90%;    
     height: 80%;
     display: flex;
     align-items: center;
