@@ -80,7 +80,7 @@
             <div class="content">
 
                 <div class="title">
-                    <h1>PLAYERS NO BLOG</h1>
+                    <h1>PERCENTUAL POR NÍVEL</h1>
                 </div>
 
                 <div class="cards">
@@ -91,55 +91,43 @@
                         </div>
 
                         <div class="percent">
-                            <h2>62%</h2>
+                            <h2 id="percCouro"></h2>
                         </div>
 
-                        <div class="number">
-                            <h3>2.365</h3>
-                        </div>
                     </div>
 
 
                     <div class="card">
                         <div class="title">
-                            <h2>COURO</h2>
+                            <h2>FERRO</h2>
                         </div>
 
                         <div class="percent">
-                            <h2 id="active">62%</h2>
+                            <h2 id="percFerro"></h2>
                         </div>
 
-                        <div class="number">
-                            <h3>2.365</h3>
-                        </div>
                     </div>
 
                     <div class="card">
                         <div class="title">
-                            <h2>COURO</h2>
+                            <h2>DIAMANTE</h2>
                         </div>
 
                         <div class="percent">
-                            <h2>62%</h2>
+                            <h2 id="percDiamante"></h2>
                         </div>
 
-                        <div class="number">
-                            <h3>2.365</h3>
-                        </div>
                     </div>
 
                     <div class="card">
                         <div class="title">
-                            <h2>COURO</h2>
+                            <h2>NETHERITE</h2>
                         </div>
 
                         <div class="percent">
-                            <h2>62%</h2>
+                            <h2 id="percNetherite"></h2>
                         </div>
 
-                        <div class="number">
-                            <h3>2.365</h3>
-                        </div>
                     </div>
                 </div>
 
@@ -159,13 +147,13 @@
 
             <div class="container-cards" id="containerCard">
 
-                
-                
+
+
 
             </div>
 
             <div class="button-random">
-                <button>NOVAS DICAS</button>
+                <button onclick="atualizarDicas()">EMBARALHAR</button>
             </div>
 
         </div>
@@ -274,7 +262,10 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 
-    window.load = listarDica(4)
+    var nivelSession = sessionStorage.fkNivel
+    window.load = listarDica(nivelSession)
+    window.load = dadosPlayersBlog()
+
 
     // RECUPERANDO VALORES DO LOGIN
     spanUser.innerHTML = `${sessionStorage.nickPlayer}`
@@ -293,8 +284,42 @@
 
     // SAIR DA CONTA
     function logout() {
-        sessionStorage.clear();
-        window.location = "../index.html";
+
+        atualizarVisita(Number(sessionStorage.idPlayer))
+
+        setTimeout(()=>{
+            sessionStorage.clear();
+            window.location = "../index.html";
+        }, 3000)
+
+    }
+
+
+    function like(idDica, idNivel) {
+
+        fetch("/dicas/liked", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idDica: idDica,
+                fkNivel: idNivel,
+            })
+
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+    }
+
+    function atualizarDicas() {
+        window.location.reload()
+        listarDica(nivelSession)
     }
 
 
@@ -316,14 +341,14 @@
                         if (count < 4) {
 
                             let containerGroup = document.querySelector('#containerCard').getElementsByClassName('group-card')
-                            
+
 
                             containerCard.innerHTML += `<div class="group-card">`
 
                             for (var j = 0; j < 2; j++) {
 
                                 containerGroup[i].innerHTML +=
-                                `
+                                    `
                                 <div class="card">
 
                                     <div class="image">
@@ -348,9 +373,11 @@
                                             <div class="count-like">
                                                 <p>${dica[count].qtdeLike} curtidas</p>
                                             </div>
+
                                             <div class="button-like">
-                                                <img src="../assets/icons/icon-coracao.png" alt="">
+                                                <a onclick="like(${dica[count].idDica}, ${dica[count].fkNivel})"><img src="../assets/icons/icon-coracao.png" alt=""></a>
                                             </div>
+
                                         </div>
 
                                     </div>
@@ -384,6 +411,84 @@
 
     }
 
+    let qtdeTotal
+    function playersTotal() {
+        fetch(`/players/totalPlayers`, { cache: 'no-store' }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                resposta.json().then(function (total) {
+                    qtdeTotal = total[0].qtde
+                });
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function dadosPlayersBlog() {
+
+        playersTotal()
+
+        fetch(`/players/listarNivel`, { cache: 'no-store' }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                resposta.json().then(function (qtdeNivel) {
+
+                    percCouro.innerHTML = `${(qtdeNivel[0].qtde * 100) / qtdeTotal}%`
+                    percFerro.innerHTML = `${(qtdeNivel[1].qtde * 100) / qtdeTotal}%`
+                    percDiamante.innerHTML = `${(qtdeNivel[2].qtde * 100) / qtdeTotal}%`
+                    percNetherite.innerHTML = `${(qtdeNivel[3].qtde * 100) / qtdeTotal}%`
+
+
+                    console.log(qtdeNivel[0].nomeNivel + " | " + qtdeNivel[0].qtde)
+                    console.log(qtdeNivel[1].nomeNivel + " | " + qtdeNivel[1].qtde)
+                    console.log(qtdeNivel[2].nomeNivel + " | " + qtdeNivel[2].qtde)
+                    console.log(qtdeNivel[3].nomeNivel + " | " + qtdeNivel[3].qtde)
+
+                });
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+
+    }
+
+
+
+    function atualizarVisita(idPlayer) {
+
+        fetch(`/players/ultimaVisita/${idPlayer}`, { cache: 'no-store' }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                console.log('Atualizado com sucesso')
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+    }
 
 
     const chartNivel = document.getElementById('chartNivel');

@@ -10,6 +10,18 @@ function listar(idNivel, randomString) {
     return database.executar(instrucao);
 }
 
+function liked(idDica, fkNivel) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente.");
+    
+    var instrucao = `   
+        update Dica
+	    set qtdeLike = qtdeLike + 1 where idDica = ${idDica} and fkNivel = ${fkNivel};
+    `
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
-    listar
+    listar,
+    liked
 };

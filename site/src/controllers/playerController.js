@@ -13,7 +13,7 @@ function logar(req, res) {
         res.status(400).send("Sua senha está undefined!");
 
     } else {
-        
+
         playerModel.logar(email, senha)
             .then(
                 function (resultado) {
@@ -50,7 +50,7 @@ function cadastrar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else {
-        
+
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         playerModel.cadastrar(nome, email, senha, nivel, plataforma, ultVisita)
             .then(
@@ -71,9 +71,75 @@ function cadastrar(req, res) {
 }
 
 
+function listarNivel(req, res) {
 
+    playerModel.listarNivel()
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+
+
+function totalPlayers(req, res) {
+    playerModel.totalPlayers()
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function ultimaVisita(req, res) {
+    
+    var idPlayer = req.params.idPlayer;
+
+    let date = new Date();
+    let dataFormatada = 
+    `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+
+    playerModel.ultimaVisita(idPlayer, dataFormatada)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
 
 module.exports = {
     logar,
-    cadastrar
+    cadastrar,
+    listarNivel,
+    totalPlayers,
+    ultimaVisita
 }

@@ -7,4 +7,8 @@ router.get("/listar/:idNivel", function (req, res) {
     dicaController.listar(req, res);
 });
 
+router.post("/liked", function (req, res) {
+    dicaController.liked(req, res);
+});
+
 module.exports = router;
