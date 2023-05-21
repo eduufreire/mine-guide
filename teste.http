@@ -1,2 +1,3 @@
-GET http://localhost:3333/players/cadastro
+GET http://localhost:3333/dicas/listar/1
+
 

@@ -157,142 +157,10 @@
             </div>
 
 
-            <div class="container-cards">
+            <div class="container-cards" id="containerCard">
 
-                <div class="group-card">
-
-                    <div class="card">
-                        <div class="image">
-                            <img src="../assets/img/fundo-biblioteca.png" alt="">
-                        </div>
-
-                        <div class="content">
-                            <div class="text">
-
-                                <div class="title">
-                                    <h3>TITULO DA DICA</h3>
-                                </div>
-
-                                <div class="desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra quam
-                                        sapien, commodo varius purus dignissim quis. Ut vestibulum ut est sed posuere.
-                                    </p>
-                                </div>
-
-                            </div>
-
-                            <div class="like">
-                                <div class="count-like">
-                                    <p>9.999 curtidas</p>
-                                </div>
-                                <div class="button-like">
-                                    <img src="../assets/icons/icon-coracao.png" alt="">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="image">
-                            <img src="../assets/img/fundo-biblioteca.png" alt="">
-                        </div>
-
-                        <div class="content">
-                            <div class="text">
-
-                                <div class="title">
-                                    <h3>TITULO DA DICA</h3>
-                                </div>
-
-                                <div class="desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra quam
-                                        sapien, commodo varius purus dignissim quis. Ut vestibulum ut est sed posuere.
-                                    </p>
-                                </div>
-
-                            </div>
-
-                            <div class="like">
-                                <div class="count-like">
-                                    <p>9.999 curtidas</p>
-                                </div>
-                                <div class="button-like">
-                                    <img src="../assets/icons/icon-coracao.png" alt="">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="group-card">
-                    <div class="card">
-                        <div class="image">
-                            <img src="../assets/img/fundo-biblioteca.png" alt="">
-                        </div>
-
-                        <div class="content">
-                            <div class="text">
-
-                                <div class="title">
-                                    <h3>TITULO DA DICA</h3>
-                                </div>
-
-                                <div class="desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra quam
-                                        sapien, commodo varius purus dignissim quis. Ut vestibulum ut est sed posuere.
-                                    </p>
-                                </div>
-
-                            </div>
-
-                            <div class="like">
-                                <div class="count-like">
-                                    <p>9.999 curtidas</p>
-                                </div>
-                                <div class="button-like">
-                                    <img src="../assets/icons/icon-coracao.png" alt="">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                    <div class="card">
-                        <div class="image">
-                            <img src="../assets/img/fundo-biblioteca.png" alt="">
-                        </div>
-
-                        <div class="content">
-                            <div class="text">
-
-                                <div class="title">
-                                    <h3>TITULO DA DICA</h3>
-                                </div>
-
-                                <div class="desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra quam
-                                        sapien, commodo varius purus dignissim quis. Ut vestibulum ut est sed posuere.
-                                    </p>
-                                </div>
-
-                            </div>
-
-                            <div class="like">
-                                <div class="count-like">
-                                    <p>9.999 curtidas</p>
-                                </div>
-                                <div class="button-like">
-                                    <img src="../assets/icons/icon-coracao.png" alt="">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+                
+                
 
             </div>
 
@@ -406,6 +274,8 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 
+    window.load = listarDica(4)
+
     // RECUPERANDO VALORES DO LOGIN
     spanUser.innerHTML = `${sessionStorage.nickPlayer}`
     spanPlat.innerHTML = `${sessionStorage.plataforma}`
@@ -415,8 +285,8 @@
 
     // VALIDAR SESSÃO
     // window.load = validarSessao()
-    function validarSessao(){
-        if(sessionStorage.idPlayer == null || sessionStorage.nickPlayer == null){
+    function validarSessao() {
+        if (sessionStorage.idPlayer == null || sessionStorage.nickPlayer == null) {
             window.location = "../login.html";
         }
     }
@@ -425,6 +295,93 @@
     function logout() {
         sessionStorage.clear();
         window.location = "../index.html";
+    }
+
+
+    function listarDica(idNivel) {
+
+        fetch(`/dicas/listar/${idNivel}`, { cache: 'no-store' }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                resposta.json().then(function (dica) {
+
+                    containerCard.innerHTML = ''
+
+                    let count = 0
+                    for (var i = 0; i < 2; i++) {
+
+                        if (count < 4) {
+
+                            let containerGroup = document.querySelector('#containerCard').getElementsByClassName('group-card')
+                            
+
+                            containerCard.innerHTML += `<div class="group-card">`
+
+                            for (var j = 0; j < 2; j++) {
+
+                                containerGroup[i].innerHTML +=
+                                `
+                                <div class="card">
+
+                                    <div class="image">
+                                        <img src="${dica[count].urlFoto}" alt="">
+                                    </div>
+
+                                    <div class="content">
+
+                                        <div class="text">
+
+                                            <div class="title">
+                                                <h3>${dica[count].titulo}</h3>
+                                            </div>
+
+                                            <div class="desc">
+                                                <p>${dica[count].descricao}</p>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="like">
+                                            <div class="count-like">
+                                                <p>${dica[count].qtdeLike} curtidas</p>
+                                            </div>
+                                            <div class="button-like">
+                                                <img src="../assets/icons/icon-coracao.png" alt="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                               `
+                                count++
+
+                            }
+
+                            containerCard.innerHTML += '</div>'
+
+                        } else {
+                            console.log('saiu')
+                            break
+                        }
+
+
+                    }
+
+                });
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+
     }
 
 
@@ -462,7 +419,7 @@
         }
 
     });
-    
+
     new Chart(chartPlataforma, {
         type: 'bar',
 

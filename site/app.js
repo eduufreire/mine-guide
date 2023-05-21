@@ -17,7 +17,7 @@ var medidasRouter = require("./src/routes/medidas");
 var playerRouter = require("./src/routes/players")
 var nivelRouter = require("./src/routes/niveis")
 var plataformaRouter = require("./src/routes/plataforma")
-
+var dicaRouter = require("./src/routes/dicas")
 
 
 
@@ -36,6 +36,7 @@ app.use("/medidas", medidasRouter)
 app.use("/players", playerRouter)
 app.use("/niveis", nivelRouter)
 app.use("/plataforma", plataformaRouter)
+app.use("/dicas", dicaRouter)
 
 
 
