@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@700&display=swap');
 
+html{
+    scroll-behavior: smooth;
+}
 
 *{
     margin: 0;
@@ -39,7 +42,7 @@ nav .container .logo img{
 }
 
 nav .container .links{
-    width: 40%;
+    width: 20%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

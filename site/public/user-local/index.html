@@ -20,28 +20,20 @@
         <div class="container">
 
             <div class="logo">
-                <a href="../index.html"><img src="../assets/img/icon-mine-guide.png" alt=""></a>
+                <a href=""><img src="../assets/img/icon-mine-guide.png" alt=""></a>
             </div>
 
             <div class="links">
-                <a href="../index.html">
-                    INÍCIO
+                <a href="#container-dicas">
+                    DICAS
                 </a>
 
-                <a href="../index.html#about-game">
-                    JOGO
+                <a href="#container-graficos">
+                    GRÁFICOS
                 </a>
 
-                <a href="">
-                    SOBRE
-                </a>
-
-                <a href="../index.html#sugestoes">
-                    SUGESTÕES
-                </a>
-
-                <a href="../login.html">
-                    <img src="../assets/icons/icon-creeper-navbar.png" alt="" id="icon-navbar">
+                <a onclick="logout()">
+                    <img src="../assets/icons/icon-sair.png" alt="" id="icon-navbar">
                 </a>
             </div>
 
@@ -63,16 +55,16 @@
                         </div>
 
                         <div class="texts">
-                            <p>User: <span>gu1st3r</span> </p>
-                            <p>Plataforma: <span>Xbox One</span></p>
-                            <p>Nível: <span>Diamente</span></p>
-                            <p>Última visita: <span>01/01/2023</span></p>
+                            <p>User: <span id="spanUser"></span> </p>
+                            <p>Plataforma: <span id="spanPlat"></span> </p>
+                            <p>Nível: <span id="spanNivel"></span> </p>
+                            <p>Última visita: <span id="spanData"></span> </p>
                         </div>
                     </div>
 
                     <div class="rank">
                         <div class="background">
-                            <img src="../assets/img/peitoral-diamante.png" alt="">
+                            <img src="" alt="" id="imgNivel">
                         </div>
                     </div>
                 </div>
@@ -157,7 +149,7 @@
     </div>
 
 
-    <div class="dicas">
+    <div class="dicas" id="container-dicas">
         <div class="container">
 
             <div class="title">
@@ -312,7 +304,7 @@
     </div>
 
 
-    <div class="graphics">
+    <div class="graphics" id="container-graficos">
         <div class="container">
 
 
@@ -412,12 +404,33 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
 <script>
+
+    // RECUPERANDO VALORES DO LOGIN
+    spanUser.innerHTML = `${sessionStorage.nickPlayer}`
+    spanPlat.innerHTML = `${sessionStorage.plataforma}`
+    spanNivel.innerHTML = `${sessionStorage.nivel}`
+    spanData.innerHTML = `${sessionStorage.ultimaVisita}`
+    document.getElementById('imgNivel').src = `../${sessionStorage.foto}`
+
+    // VALIDAR SESSÃO
+    // window.load = validarSessao()
+    function validarSessao(){
+        if(sessionStorage.idPlayer == null || sessionStorage.nickPlayer == null){
+            window.location = "../login.html";
+        }
+    }
+
+    // SAIR DA CONTA
+    function logout() {
+        sessionStorage.clear();
+        window.location = "../index.html";
+    }
+
+
+
     const chartNivel = document.getElementById('chartNivel');
     const chartPlataforma = document.getElementById('chartPlataforma');
-
 
     new Chart(chartNivel, {
 
@@ -449,10 +462,8 @@
         }
 
     });
-
-
+    
     new Chart(chartPlataforma, {
-
         type: 'bar',
 
         data: {
@@ -481,4 +492,6 @@
         }
 
     });
+
+
 </script>

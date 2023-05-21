@@ -10,6 +10,11 @@
     <link rel="shortcut icon" href="assets/icons/icon-mine-guide.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style-scrollbar.css">
     <link rel="stylesheet" href="css/style-register.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 </head>
 
 <body>
@@ -47,14 +52,14 @@
                                     <div class="parag">
                                         <p>Usuário:</p>
                                     </div>
-                                    <input type="text" placeholder="Digite seu usuário">
+                                    <input type="text" id="inputNick" placeholder="Digite seu usuário">
                                 </div>
 
                                 <div class="input">
                                     <div class="parag">
                                         <p>Email:</p>
                                     </div>
-                                    <input type="text" placeholder="seuemail@email">
+                                    <input type="text" id="inputEmail" placeholder="seuemail@email">
                                 </div>
 
                             </div>
@@ -66,11 +71,8 @@
                                     <div class="parag">
                                         <p>Plataforma:</p>
                                     </div>
-                                    <select name="" id="">
+                                    <select name="" id="selectPlataforma">
                                         <option value="" selected disabled>Selecione...</option>
-                                        <option value="">Xbox</option>
-                                        <option value="">Celular</option>
-                                        <option value="">Computador</option>
                                     </select>
                                 </div>
 
@@ -78,29 +80,39 @@
                                     <div class="parag">
                                         <p>Nível:</p>
                                     </div>
-                                    <select name="" id="">
+                                    <select name="" id="selectNivel">
                                         <option value="" selected disabled>Selecione...</option>
-                                        <option value="">Couro</option>
-                                        <option value="">Ferro</option>
-                                        <option value="">Diamante</option>
                                     </select>
                                 </div>
 
                             </div>
 
 
-                            <div class="input">
-                                <div class="parag">
-                                    <p>Senha:</p>
+                            <div class="group-input">
+
+                                <div class="input">
+                                    <div class="parag">
+                                        <p>Senha:</p>
+                                    </div>
+                                    <input type="password" id="inputSenha" placeholder="******">
                                 </div>
-                                <input type="password" placeholder="******">
+
+                                <div class="input">
+                                    <div class="parag">
+                                        <p>Confirmar senha:</p>
+                                    </div>
+                                    <input type="password" id="inputConfirmaSenha" placeholder="******">
+                                </div>
+
                             </div>
+
+
 
                         </div>
 
 
                         <div class="button">
-                            <button>ENTRAR</button>
+                            <button onclick="cadastrarPlayer()">CADASTRAR</button>
                         </div>
 
                     </div>
@@ -116,7 +128,178 @@
 
         </div>
     </div>
-    
+
 
 </body>
+
 </html>
+
+
+
+<script src="js/config-toast.js"></script>
+<script>
+
+
+
+        
+    let atualizarDados = ()=>{
+        listarNiveis()
+        listarPlataformas()
+    }
+    window.load = atualizarDados()
+
+
+    let sltNivel = document.getElementById('selectNivel')
+    function listarNiveis() {
+
+        fetch("/niveis/listar", { cache: 'no-store' }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                resposta.json().then(function (nivel) {
+                    for (var i = 0; i < nivel.length; i++) {
+                        console.log(nivel[i].nomeNivel)
+                        sltNivel.options[sltNivel.options.length] = new Option(nivel[i].nomeNivel, nivel[i].idNivel)
+                    }
+                })
+
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+    }
+
+    let sltPlataforma = document.getElementById('selectPlataforma')
+    function listarPlataformas() {
+
+        fetch("/plataforma/listar", { cache: 'no-store' }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                resposta.json().then(function (plat) {
+                    for (var i = 0; i < plat.length; i++) {
+                        console.log(plat[i].nomePlataforma)
+                        sltPlataforma.options[sltPlataforma.options.length] = new Option(plat[i].nomePlataforma, plat[i].idPlataforma)
+                    }
+                })
+
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+    }
+
+
+
+    function cadastrarPlayer() {
+
+        var nick = inputNick.value
+        var email = inputEmail.value
+
+        var nivelPlayer = selectNivel.value
+        var plataformaPlayer = selectPlataforma.value
+
+        var senha = inputSenha.value
+        var confirmaSenha = inputConfirmaSenha.value
+
+
+        var countError = 0
+        if (nick == "" || email == "" || nivelPlayer == ""
+            || plataformaPlayer == "" || senha == "" || confirmaSenha == "") {
+            toastr.warning(`
+            <b style="font-family: Noto Sans; font-size: 15px">
+                Por favor, preencha todos os campos!
+            </b>`)
+            countError++
+        }
+
+        if (!email.endsWith('@gmail.com') || email.startsWith('@')) {
+            toastr.warning(`
+            <b style="font-family: Noto Sans; font-size: 15px">
+                Seu email precisa ser válido!
+            </b>`)
+            countError++
+        }
+
+        if (senha != confirmaSenha) {
+            toastr.warning(`
+            <b style="font-family: Noto Sans; font-size: 15px">
+                As senhas não coincidem!
+            </b>`)
+            countError++
+        }
+
+
+        if (countError > 0) {
+            setTimeout(() => {
+                toastr.info(`
+                <b style="font-family: Noto Sans; font-size: 15px">
+                    Corrija os erros antes de prosseguir!
+                </b>`)
+            }, 2000)
+
+        } else {
+
+            let date = new Date()
+            let dataFormatada = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+
+            fetch("/players/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nickServer: nick,
+                    emailServer: email,
+                    senhaServer: senha,
+                    nivelServer: Number(nivelPlayer),
+                    plataformaServer: Number(plataformaPlayer),
+                    ultVisita: dataFormatada
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+
+                    toastr.success(`
+                    <b style="font-family: Noto Sans; font-size: 15px">
+                        Cadastro realizado com sucesso! Você está sendo redirecionado.
+                    </b>`)
+
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000")
+
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+            return false;
+        }
+
+    }
+
+
+
+
+
+</script>

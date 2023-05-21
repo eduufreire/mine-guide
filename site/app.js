@@ -13,6 +13,14 @@ var usuarioRouter = require("./src/routes/usuarios");
 var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
 
+//minhas rotas
+var playerRouter = require("./src/routes/players")
+var nivelRouter = require("./src/routes/niveis")
+var plataformaRouter = require("./src/routes/plataforma")
+
+
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -23,6 +31,13 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter)
+
+// minhas rotas
+app.use("/players", playerRouter)
+app.use("/niveis", nivelRouter)
+app.use("/plataforma", plataformaRouter)
+
+
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n

@@ -10,6 +10,11 @@
     <link rel="shortcut icon" href="assets/icons/icon-mine-guide.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style-scrollbar.css">
     <link rel="stylesheet" href="css/style-login.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 </head>
 
 <body>
@@ -42,19 +47,19 @@
                         <div class="inputs">
                             <div class="input">
                                 <p>Email:</p>
-                                <input type="text" placeholder="seuemail@email">
+                                <input type="text" id="inputEmail" placeholder="seuemail@email">
                             </div>
 
                             <div class="input">
                                 <p>Senha:</p>
-                                <input type="password" placeholder="******">
+                                <input type="password" id="inputSenha" placeholder="******">
                             </div>
 
                         </div>
 
 
                         <div class="button">
-                            <button>ENTRAR</button>
+                            <button onclick="logar()">ENTRAR</button>
                         </div>
 
                     </div>
@@ -70,7 +75,86 @@
 
         </div>
     </div>
-    
+
 
 </body>
+
 </html>
+
+<script src="js/config-toast.js"></script>
+<script>
+
+
+    function logar() {
+
+        var email = inputEmail.value
+        var senha = inputSenha.value
+
+        if (email == "" || senha == "") {
+            toastr.warning(`
+            <b style="font-family: Noto Sans; font-size: 15px">
+                Por favor, preencha todos os campos!
+            </b>`)
+
+        } else {
+
+            fetch("/players/logar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: email,
+                    senhaServer: senha
+                })
+            }).then(function (resposta) {
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+
+                        console.log(json[0])
+
+                        sessionStorage.idPlayer = json[0].idPlayer;
+                        sessionStorage.nickPlayer = json[0].nick;
+                        sessionStorage.emailUsuario = json[0].email;
+                        sessionStorage.nivel = json[0].nomeNivel;
+                        sessionStorage.foto = json[0].urlFoto
+                        sessionStorage.plataforma = json[0].nomePlataforma;
+                        sessionStorage.ultimaVisita = json[0].ultVisita;
+
+
+                        setTimeout(function () {
+                            window.location = "./user-local/index.html";
+                        }, 1000); 
+
+                    });
+
+                } else {
+
+                    console.log("Houve um erro ao tentar realizar o login!");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+            return false;
+
+
+
+
+        }
+
+
+
+
+    }
+
+
+</script>
