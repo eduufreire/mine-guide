@@ -110,27 +110,43 @@
             }).then(function (resposta) {
 
                 if (resposta.ok) {
-                    console.log(resposta);
+
 
                     resposta.json().then(json => {
 
-                        console.log(json[0])
+                        console.log(json)
 
-                        sessionStorage.idPlayer = json[0].idPlayer;
-                        sessionStorage.nickPlayer = json[0].nick;
-                        sessionStorage.emailUsuario = json[0].email;
-                        sessionStorage.nivel = json[0].nomeNivel;
-                        sessionStorage.fkNivel = json[0].fkNivel
-                        sessionStorage.foto = json[0].urlFoto
-                        sessionStorage.plataforma = json[0].nomePlataforma;
-                        sessionStorage.ultimaVisita = json[0].ultVisita;
+                        if (json.length == 0) {
+
+                            toastr.warning(
+                            `<b style="font-family: Noto Sans; font-size: 14px">
+                                E-mail ou Senha incorretos.
+                            </b>`)
+
+                        } else {
+
+                            sessionStorage.idPlayer = json[0].idPlayer;
+                            sessionStorage.nickPlayer = json[0].nick;
+                            sessionStorage.emailUsuario = json[0].email;
+                            sessionStorage.nivel = json[0].nomeNivel;
+                            sessionStorage.fkNivel = json[0].fkNivel
+                            sessionStorage.foto = json[0].urlFoto
+                            sessionStorage.plataforma = json[0].nomePlataforma;
+                            sessionStorage.ultimaVisita = json[0].ultVisita;
+
+                            toastr.success(`<b style="font-family: Noto Sans; font-size: 14px">
+                                Sendo redirecionado para a sua tela!
+                            </b>`)
+
+                            setTimeout(function () {
+                                window.location = "./user-local/index.html";
+                            }, 3000);
 
 
-                        setTimeout(function () {
-                            window.location = "./user-local/index.html";
-                        }, 1000); 
+                        }
 
                     });
+
 
                 } else {
 
