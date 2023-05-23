@@ -35,6 +35,18 @@ function listarNivel() {
 
 }
 
+function listarPlataformas() {
+
+    var instrucao =
+        `select nomePlataforma, count(fkPlataforma) as qtde from Player
+            right join Plataforma on fkPlataforma = idPlataforma
+            group by nomePlataforma;
+    `
+
+    return database.executar(instrucao)
+
+}
+
 
 function totalPlayers() {
 
@@ -58,6 +70,7 @@ module.exports = {
     logar,
     cadastrar,
     listarNivel,
+    listarPlataformas,
     totalPlayers,
     ultimaVisita
 };

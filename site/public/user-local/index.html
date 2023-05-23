@@ -85,7 +85,7 @@
             <div class="content">
 
                 <div class="title">
-                    <h1>PERCENTUAL POR NÍVEL</h1>
+                    <h1>PERC. PLAYERS POR NÍVEL</h1>
                 </div>
 
                 <div class="cards">
@@ -279,6 +279,87 @@
     spanData.innerHTML = `${sessionStorage.ultimaVisita}`
     document.getElementById('imgNivel').src = `../${sessionStorage.foto}`
 
+
+
+    let labelsNivel = []
+    let dadosNivel = []
+
+    let labelsPlat = []
+    let dadosPlat = []
+
+    let chartNivel = document.getElementById('chartNivel');
+    let chartPlataforma = document.getElementById('chartPlataforma');
+
+    var graficoNivel = new Chart(chartNivel, {
+
+        type: 'bar',
+
+        data: {
+            labels: labelsNivel,
+            datasets: [{
+                color: 'white',
+                data: dadosNivel,
+                borderWidth: 1,
+                borderColor: '#1E1E1E',
+                backgroundColor: ['#69bd63', '#69bd63', '#69bd63', '#69bd63']
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: false,
+                    labels: {
+                        color: 'white',
+                        font: {
+                            size: 10,
+                            family: 'Noto Sans',
+                        }
+                    }
+                }
+            }
+        }
+
+    });
+
+    var graficoPlataforma = new Chart(chartPlataforma, {
+        type: 'bar',
+
+        data: {
+            labels: labelsPlat,
+            datasets: [{
+                color: 'white',
+                data: dadosPlat,
+                borderWidth: 1,
+                borderColor: '#1E1E1E',
+                backgroundColor: ['#428F4A', '#428F4A', '#428F4A', '#428F4A']
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: false,
+                    labels: {
+                        color: 'white',
+                        font: {
+                            size: 10,
+                            family: 'Noto Sans',
+                        }
+                    }
+                }
+            }
+        }
+
+    });
+
+
+
+
+
+
+
+
+
+
     // VALIDAR SESSÃO
     // window.load = validarSessao()
     function validarSessao() {
@@ -293,7 +374,7 @@
         atualizarVisita(Number(sessionStorage.idPlayer))
         toastr.info('<b> Até logo! :) </b>')
 
-        setTimeout(()=>{
+        setTimeout(() => {
             sessionStorage.clear();
             window.location = "../index.html";
         }, 2000)
@@ -450,16 +531,42 @@
 
                 resposta.json().then(function (qtdeNivel) {
 
+                    console.log(qtdeNivel)
+
                     percCouro.innerHTML = `${(qtdeNivel[0].qtde * 100) / qtdeTotal}%`
                     percFerro.innerHTML = `${(qtdeNivel[1].qtde * 100) / qtdeTotal}%`
                     percDiamante.innerHTML = `${(qtdeNivel[2].qtde * 100) / qtdeTotal}%`
                     percNetherite.innerHTML = `${(qtdeNivel[3].qtde * 100) / qtdeTotal}%`
 
+                    for (var i = 0; i < qtdeNivel.length; i++) {
+                        labelsNivel.push(qtdeNivel[i].nomeNivel)
+                        dadosNivel.push(qtdeNivel[i].qtde)
+                    }
+                });
 
-                    console.log(qtdeNivel[0].nomeNivel + " | " + qtdeNivel[0].qtde)
-                    console.log(qtdeNivel[1].nomeNivel + " | " + qtdeNivel[1].qtde)
-                    console.log(qtdeNivel[2].nomeNivel + " | " + qtdeNivel[2].qtde)
-                    console.log(qtdeNivel[3].nomeNivel + " | " + qtdeNivel[3].qtde)
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+
+
+
+        fetch(`/players/listarPlataformas`, { cache: 'no-store' }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                resposta.json().then(function (qtdePlat) {
+
+                    for (var j = 0; j < qtdePlat.length; j++) {
+                        labelsPlat.push(qtdePlat[j].nomePlataforma)
+                        dadosPlat.push(qtdePlat[j].qtde)
+                    }
 
                 });
 
@@ -471,6 +578,12 @@
             console.log(`#ERRO: ${resposta}`);
         });
 
+
+        setTimeout(() => {
+            graficoNivel.update();
+            graficoPlataforma.update();
+        }, 5000)
+        
 
     }
 
@@ -496,70 +609,6 @@
 
     }
 
-
-    const chartNivel = document.getElementById('chartNivel');
-    const chartPlataforma = document.getElementById('chartPlataforma');
-
-    new Chart(chartNivel, {
-
-        type: 'bar',
-
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green'],
-            datasets: [{
-                color: 'white',
-                data: [12, 19, 3, 5],
-                borderWidth: 1,
-                borderColor: '#1E1E1E',
-                backgroundColor: ['#69bd63', '#69bd63', '#69bd63', '#69bd63']
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false,
-                    labels: {
-                        color: 'white',
-                        font: {
-                            size: 10,
-                            family: 'Noto Sans',
-                        }
-                    }
-                }
-            }
-        }
-
-    });
-
-    new Chart(chartPlataforma, {
-        type: 'bar',
-
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green',],
-            datasets: [{
-                color: 'white',
-                data: [12, 19, 3, 5],
-                borderWidth: 1,
-                borderColor: '#1E1E1E',
-                backgroundColor: ['#428F4A', '#428F4A', '#428F4A', '#428F4A']
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false,
-                    labels: {
-                        color: 'white',
-                        font: {
-                            size: 10,
-                            family: 'Noto Sans',
-                        }
-                    }
-                }
-            }
-        }
-
-    });
 
 
 </script>

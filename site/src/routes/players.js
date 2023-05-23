@@ -15,6 +15,10 @@ router.get("/listarNivel", function (req, res) {
     playerController.listarNivel(req, res);
 });
 
+router.get("/listarPlataformas", function (req, res) {
+    playerController.listarPlataformas(req, res);
+});
+
 router.get("/totalPlayers", function (req, res) {
     playerController.totalPlayers(req, res);
 });
