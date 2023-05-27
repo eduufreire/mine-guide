@@ -3,7 +3,7 @@ var router = express.Router();
 
 var dicaController = require("../controllers/dicaController");
 
-router.get("/listar/:idNivel", function (req, res) {
+router.post("/listar/:idNivel", function (req, res) {
     dicaController.listar(req, res);
 });
 

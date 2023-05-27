@@ -268,7 +268,9 @@
 <script>
 
     var nivelSession = sessionStorage.fkNivel
-    window.load = listarDica(nivelSession)
+    var idSession = sessionStorage.idPlayer
+
+    window.load = listarDica(idSession, nivelSession)
     window.load = dadosPlayersBlog()
 
 
@@ -353,13 +355,6 @@
 
 
 
-
-
-
-
-
-
-
     // VALIDAR SESSÃO
     // window.load = validarSessao()
     function validarSessao() {
@@ -367,6 +362,7 @@
             window.location = "../login.html";
         }
     }
+
 
     // SAIR DA CONTA
     function logout() {
@@ -382,7 +378,7 @@
     }
 
 
-    function like(idDica, idNivel) {
+    function like(idPlayer, idDica, idNivel) {
 
         fetch("/dicas/liked", {
             method: "POST",
@@ -390,13 +386,26 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
+                idPlayer: idPlayer,
                 idDica: idDica,
                 fkNivel: idNivel,
             })
 
         }).then(function (resposta) {
 
-            console.log("resposta: ", resposta);
+            console.log(resposta.status)
+            if (resposta.status == 200) {
+
+
+                window.location.reload()
+
+
+            } else {
+                toastr.warning(`<b style="font-family: Noto Sans; font-size: 14px">
+                    Você já curtiu essa dica!
+                </b>`)
+            }
+
 
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
@@ -404,15 +413,25 @@
 
     }
 
+
     function atualizarDicas() {
         window.location.reload()
-        listarDica(nivelSession)
+        listarDica(idSession, nivelSession)
     }
 
 
-    function listarDica(idNivel) {
+    function listarDica(idPlayer, idNivel) {
 
-        fetch(`/dicas/listar/${idNivel}`, { cache: 'no-store' }).then(function (resposta) {
+        fetch(`/dicas/listar/${idNivel}`, { 
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idPlayer: idPlayer,
+            })
+
+        }).then(function (resposta) {
 
             console.log("resposta: ", resposta);
 
@@ -428,8 +447,6 @@
                         if (count < 4) {
 
                             let containerGroup = document.querySelector('#containerCard').getElementsByClassName('group-card')
-
-
                             containerCard.innerHTML += `<div class="group-card">`
 
                             for (var j = 0; j < 2; j++) {
@@ -439,7 +456,7 @@
                                 <div class="card">
 
                                     <div class="image">
-                                        <img src="${dica[count].urlFoto}" alt="">
+                                        <img src="${dica[1][count].urlFoto}" alt="">
                                     </div>
 
                                     <div class="content">
@@ -447,22 +464,26 @@
                                         <div class="text">
 
                                             <div class="title">
-                                                <h3>${dica[count].titulo}</h3>
+                                                <h3>${dica[1][count].titulo}</h3>
                                             </div>
 
                                             <div class="desc">
-                                                <p>${dica[count].descricao}</p>
+                                                <p>${dica[1][count].descricao}</p>
                                             </div>
 
                                         </div>
 
                                         <div class="like">
                                             <div class="count-like">
-                                                <p>${dica[count].qtdeLike} curtidas</p>
+                                                <p>${dica[1][count].qtdeLike} curtidas</p>
                                             </div>
 
                                             <div class="button-like">
-                                                <a onclick="like(${dica[count].idDica}, ${dica[count].fkNivel})"><img src="../assets/icons/icon-coracao.png" alt=""></a>
+                                                <a onclick="like(${idPlayer}, ${dica[1][count].idDica}, ${dica[1][count].fkNivel})" class="teste">              
+
+                                                    <img src="../assets/icons/icon-coracao.png" alt="">
+
+                                                </a>
                                             </div>
 
                                         </div>
@@ -471,6 +492,18 @@
 
                                 </div>
                                `
+
+                                var linksFoto = document.getElementsByClassName('teste')
+                                for (var c = 0; c < dica[0].length ; c++) {
+
+                                    if (dica[0][c].fkDica == dica[1][count].idDica) {
+                                    
+                                        linksFoto[count].innerHTML = `<img src="../assets/icons/icon-coracao-cheio.png" alt="">`
+                                        
+                                    }
+
+                                }
+
                                 count++
 
                             }
@@ -498,6 +531,7 @@
 
     }
 
+
     let qtdeTotal
     function playersTotal() {
         fetch(`/players/totalPlayers`, { cache: 'no-store' }).then(function (resposta) {
@@ -519,6 +553,7 @@
         });
     }
 
+
     function dadosPlayersBlog() {
 
         playersTotal()
@@ -533,10 +568,10 @@
 
                     console.log(qtdeNivel)
 
-                    percCouro.innerHTML = `${(qtdeNivel[0].qtde * 100) / qtdeTotal}%`
-                    percFerro.innerHTML = `${(qtdeNivel[1].qtde * 100) / qtdeTotal}%`
-                    percDiamante.innerHTML = `${(qtdeNivel[2].qtde * 100) / qtdeTotal}%`
-                    percNetherite.innerHTML = `${(qtdeNivel[3].qtde * 100) / qtdeTotal}%`
+                    percCouro.innerHTML = `${((qtdeNivel[0].qtde * 100) / qtdeTotal).toFixed()}%`
+                    percFerro.innerHTML = `${((qtdeNivel[1].qtde * 100) / qtdeTotal).toFixed()}%`
+                    percDiamante.innerHTML = `${((qtdeNivel[2].qtde * 100) / qtdeTotal).toFixed()}%`
+                    percNetherite.innerHTML = `${((qtdeNivel[3].qtde * 100) / qtdeTotal).toFixed()}%`
 
                     for (var i = 0; i < qtdeNivel.length; i++) {
                         labelsNivel.push(qtdeNivel[i].nomeNivel)
@@ -583,10 +618,9 @@
             graficoNivel.update();
             graficoPlataforma.update();
         }, 5000)
-        
+
 
     }
-
 
 
     function atualizarVisita(idPlayer) {
