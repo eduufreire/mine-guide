@@ -86,6 +86,7 @@
 
                 <div class="title">
                     <h1>PERC. PLAYERS POR NÍVEL</h1>
+                    <h3>Total: <span id="totalPlayerBlog"></span></h3>
                 </div>
 
                 <div class="cards">
@@ -267,6 +268,19 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 
+    window.load = validarSessao()
+    function validarSessao() {
+        if (sessionStorage.idPlayer == null || sessionStorage.nickPlayer == null) {
+            window.location = "../index.html";
+        setTimeout(() => {
+            sessionStorage.clear();
+        }, 2000)
+        }
+
+        
+    }
+
+
     var nivelSession = sessionStorage.fkNivel
     var idSession = sessionStorage.idPlayer
 
@@ -356,12 +370,7 @@
 
 
     // VALIDAR SESSÃO
-    // window.load = validarSessao()
-    function validarSessao() {
-        if (sessionStorage.idPlayer == null || sessionStorage.nickPlayer == null) {
-            window.location = "../login.html";
-        }
-    }
+
 
 
     // SAIR DA CONTA
@@ -370,10 +379,7 @@
         atualizarVisita(Number(sessionStorage.idPlayer))
         toastr.info('<b> Até logo! :) </b>')
 
-        setTimeout(() => {
-            sessionStorage.clear();
-            window.location = "../index.html";
-        }, 2000)
+        
 
     }
 
@@ -422,7 +428,7 @@
 
     function listarDica(idPlayer, idNivel) {
 
-        fetch(`/dicas/listar/${idNivel}`, { 
+        fetch(`/dicas/listar/${idNivel}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -494,12 +500,12 @@
                                `
 
                                 var linksFoto = document.getElementsByClassName('teste')
-                                for (var c = 0; c < dica[0].length ; c++) {
+                                for (var c = 0; c < dica[0].length; c++) {
 
                                     if (dica[0][c].fkDica == dica[1][count].idDica) {
-                                    
+
                                         linksFoto[count].innerHTML = `<img src="../assets/icons/icon-coracao-cheio.png" alt="">`
-                                        
+
                                     }
 
                                 }
@@ -542,6 +548,7 @@
 
                 resposta.json().then(function (total) {
                     qtdeTotal = total[0].qtde
+                    totalPlayerBlog.innerHTML = `${total[0].qtde}`
                 });
 
             } else {
