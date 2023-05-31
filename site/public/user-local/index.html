@@ -272,12 +272,10 @@
     function validarSessao() {
         if (sessionStorage.idPlayer == null || sessionStorage.nickPlayer == null) {
             window.location = "../index.html";
-        setTimeout(() => {
-            sessionStorage.clear();
-        }, 2000)
+            setTimeout(() => {
+                sessionStorage.clear();
+            }, 2000)
         }
-
-        
     }
 
 
@@ -379,7 +377,8 @@
         atualizarVisita(Number(sessionStorage.idPlayer))
         toastr.info('<b> Até logo! :) </b>')
 
-        
+        window.location = "../index.html";
+        sessionStorage.clear();
 
     }
 
