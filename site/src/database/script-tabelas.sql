@@ -1,6 +1,7 @@
 create database mineGuide;
 use mineGuide;
 
+drop database mineGuide;
 create table Nivel(
 	idNivel int primary key auto_increment,
     nomeNivel varchar(45),
@@ -34,8 +35,16 @@ create table Player(
     foreign key(fkNivel) references Nivel(idNivel),
     foreign key(fkPlataforma) references Plataforma(idPlataforma)
 );
-    
-    
+
+create table LikedDica(
+	fkPlayer int,
+    fkNivel int,
+	fkDica int,
+    foreign key(fkNivel, fkDica) references Dica(fkNivel, idDica),
+    foreign key(fkPlayer) references Player(idPlayer),
+    primary key(fkPlayer, fkNivel, fkDica)
+);
+
 insert into Nivel
 	values (null, 'Couro', 'assets/img/peitoral-couro.png'),
 		   (null, 'Ferro', 'assets/img/peitoral-ferro.png'),
@@ -48,8 +57,6 @@ insert into Plataforma
            (null, 'Playstation'),
            (null, 'Xbox');
 
-select * from Dica;	
-	
 -- DICAS COURO
 insert into Dica (fkNivel, idDica, titulo, descricao, urlFoto, qtdeLike)
 	values (1, 1, 'Nunca fique sem materiais', 'Explore seus arredores e colete materiais para criar armas, armaduras, comida, ferramentas e materiais de construção.', 'https://files.tecnoblog.net/wp-content/uploads/2019/09/minecraft-008-700x426.jpg', 0),
@@ -93,5 +100,26 @@ insert into Dica (fkNivel, idDica, titulo, descricao, urlFoto, qtdeLike)
     (4, 6, 'Colecionador pt.2', 'Colecione todos os mobs do jogo!', 'https://pm1.aminoapps.com/7085/d0babe62f6a72f228e3ea0864d86023cda7da89er1-739-415v2_uhq.jpg', 0),
     (4, 7, 'Mestre das conquistas', 'Conclua todas as conquistas que o próprio jogo disponibiliza', 'https://pbs.twimg.com/media/FJt6VGYXoAgD1ie.png', 0),
     (4, 8, 'Reforme suas construções', 'Dê uma repaginada em suas construções, teste novos estilos.', 'https://i.redd.it/fcf1j25mhrc71.jpg', 0);
+
+
+
+INSERT INTO Player (nick, email, senha, ultimaVisita, fkNivel, fkPlataforma)
+VALUES
+    ('player1', 'player1@gmail.com', '123', '2023-05-30', 1, 1),
+    ('player2', 'player2@gmail.com', '123', '2023-05-29', 1, 2),
+    ('player3', 'player3@gmail.com', '123', '2023-05-28', 3, 2),
+    ('player4', 'player4@gmail.com', '123', '2023-05-27', 4, 2),
+    ('player5', 'player5@gmail.com', '123', '2023-05-26', 2, 2),
+    ('player6', 'player6@gmail.com', '123', '2023-05-25', 4, 3),
+    ('player7', 'player7@gmail.com', '123', '2023-05-24', 3, 4),
+    ('player8', 'player8@gmail.com', '123', '2023-05-23', 1, 1),
+    ('player9', 'player9@gmail.com', '123', '2023-05-22', 2, 3),
+    ('player10', 'player10@gmail.com', '123', '2023-05-21', 2, 4),
+    ('player11', 'player11@gmail.com', '123', '2023-05-20', 1, 1),
+    ('player12', 'player12@gmail.com', '123', '2023-05-19', 1, 2),
+    ('player13', 'player13@gmail.com', '123', '2023-05-18', 3, 1),
+    ('player14', 'player14@gmail.com', '123', '2023-05-17', 2, 1),
+    ('player15', 'player15@gmail.com', '123', '2023-05-16', 3, 2);
+
 
     
