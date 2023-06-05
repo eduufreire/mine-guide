@@ -285,6 +285,10 @@
     window.load = listarDica(idSession, nivelSession)
     window.load = dadosPlayersBlog()
 
+    setInterval(()=>{
+        dadosPlayersBlog()
+    }, 5000)
+
 
     // RECUPERANDO VALORES DO LOGIN
     spanUser.innerHTML = `${sessionStorage.nickPlayer}`
@@ -295,11 +299,11 @@
 
 
 
-    let labelsNivel = []
-    let dadosNivel = []
+    let labelsNivel = [0, 0, 0, 0]
+    let dadosNivel = [0, 0, 0, 0]
 
-    let labelsPlat = []
-    let dadosPlat = []
+    let labelsPlat = [0, 0, 0, 0]
+    let dadosPlat = [0, 0, 0, 0]
 
     let chartNivel = document.getElementById('chartNivel');
     let chartPlataforma = document.getElementById('chartPlataforma');
@@ -590,8 +594,8 @@
                     percNetherite.innerHTML = `${((qtdeNivel[3].qtde * 100) / qtdeTotal).toFixed()}%`
 
                     for (var i = 0; i < qtdeNivel.length; i++) {
-                        labelsNivel.push(qtdeNivel[i].nomeNivel)
-                        dadosNivel.push(qtdeNivel[i].qtde)
+                        labelsNivel[i] = qtdeNivel[i].nomeNivel
+                        dadosNivel[i] = qtdeNivel[i].qtde
                     }
                 });
 
@@ -615,8 +619,8 @@
                 resposta.json().then(function (qtdePlat) {
 
                     for (var j = 0; j < qtdePlat.length; j++) {
-                        labelsPlat.push(qtdePlat[j].nomePlataforma)
-                        dadosPlat.push(qtdePlat[j].qtde)
+                        labelsPlat[j] = qtdePlat[j].nomePlataforma
+                        dadosPlat[j] = qtdePlat[j].qtde
                     }
 
                 });
